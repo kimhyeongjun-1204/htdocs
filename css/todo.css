@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Ownglyph_ryuttung-Rg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-2@1.0/Ownglyph_ryuttung-Rg.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body >*{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7fffd4;
+    /* 자식 폰트 전체 적용 */
+    font-weight: 400;
+    font-style: normal;
+}
+
+body>*>* {
+    margin-bottom: 100px;
+}
+
+
+
+/* 1. TO DO LIST */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 독도 폰트 설정 */
+    font-family: "East Sea Dokdo", sans-serif;
+    font-size: 50px;
+
+    margin-bottom: 20px;
+}
+
+#select_day {
+    height: 30%;
+    position: relative;
+    left: 130px;
+    font-size: 16px;
+    padding: 5px;
+}
+
+#send {
+    position: absolute;
+    right: 300px;
+}
+
+
+/* 2.일자 및 요일  */
+.day {
+    width: 90%;
+    font-size: 40px;
+    display: flex;
+
+    font-family: "Gugi", sans-serif;
+}
+
+/* 2-(1). DATE(일자)   */
+.date {
+    /* 밑줄 설정  */
+    position: relative;
+    left: 10%;
+    border-bottom: 1px solid black;
+}
+
+/* 2-(2). 요일 표시 css : S M T W T F S */
+.week {
+    position: absolute;
+    right: 70px;
+
+    /* 폰트 설정 */
+    font-family: "Black Han Sans", sans-serif;
+
+}
+
+[id^=week] {
+    /* margin-right: 30px; */
+    padding: 30px 42px;
+}
+
+
+
+/* 3. 할일 리스트 적는 그룹( 원, 밑줄, 체크박스) */
+.todo {
+    width: 90%;
+    position: relative;
+}
+
+[id^=todo] {
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#todo4,
+#todo5,
+#todo6 {
+    display: none;
+}
+
+.todo>*>* {
+    margin-right: 20px;
+}
+
+/* (1) 원 */
+.circle {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    border-radius: 50%;
+}
+
+/* (2) 개별 리스트  */
+[id^=list] {
+    border: none;
+    font-family: 'Ownglyph_ryuttung-Rg';
+    font-size: 30px;
+    width: 1500px;
+    height: 3rem;
+}
+
+[id^=checkbox] {
+    width: 50px;
+    height: 50px;
+}
+
+/* 버튼 설정 */
+button {
+    border-radius: 15%;
+    padding: 8px 15px;
+    /* color: white;
+    background-color: aqua;
+    border: 2px solid black;
+    font-family: 'GmarketSansBold'; */
+    font-weight: bold;
+    font-size: 30px;   
+}
+
+/* 추가, 삭제 버튼 */
+
+.row_button {
+    position: absolute;
+    right: -15px;
+    bottom: -50px;
+}
+
+.row_button>* {
+    margin-right: 30px;
+}

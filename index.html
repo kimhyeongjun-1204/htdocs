@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=East+Sea+Dokdo&family=Gugi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/todo.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <form action="./todo.php" name="sendTodo" method="get">
+        <div class="title">
+            <h1>To Do List</h1>
+            <input type="date" id="select_day" name="date" min="2024-01-01" max="2024-12-31">
+            <button type="submit" id="send">저장</button>
+        </div>
+
+        <div class="day">
+            <div class="date">
+                <span>Date</span>
+                <span id="month"></span>
+                <span> / </span>
+                <span id="dayofmonth"></span>
+            </div>
+            <div class="week"></div>
+        </div>
+
+        <div class="todo">
+            <div class="row_button">
+                <button type="button" id="add">추가</button>
+                <button type="button" id="delete">삭제</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- 스크립트 부분을 여기로 이동 -->
+    <script style="display: none;">
+        var weekArr = ["S", "M", "T", "W", "T", "F", "S"];
+        // div class="week" 태그 안에 요일 태그 추가 
+        var container = document.querySelector(".week");
+        for (var i in weekArr) {
+            var span = document.createElement("span");
+            span.id = "week" + i;
+            span.textContent = weekArr[i];
+            span.style.textAlign = "right";
+            container.appendChild(span);
+        }
+
+        // todo리스트 만들기(7개) 
+        var container = document.querySelector(".todo");
+        for (var i = 0; i < 7; i++) {
+            var color = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+            var checkNum = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+            var order = ['첫', '두', '세', '네', '다섯', '여섯', '일곱'];
+
+            var todo = document.createElement("div");
+            todo.id = "todo" + i;
+
+            //1. 원 생성
+            var circle = document.createElement("div");
+            circle.className = 'circle';
+            circle.style.backgroundColor = color[i];
+
+            //2. 작성 리스트 생성
+            var input = document.createElement("input");
+            input.id = "list" + i;
+            input.name = "list[]";
+            input.className = "list";
+            input.type = "text";
+            input.style.display = "inline-block";
+            input.placeholder = order[i] + "번째 할일을 입력하세요.";
+
+            //3. 사각형(체크 리스트 생성)
+            var checkbox = document.createElement("input");
+
+            checkbox.id = "checkbox" + i;
+            checkbox.className = "checkbox";
+            checkbox.type = "checkbox";
+            checkbox.name = "checkbox[]";
+            checkbox.style.accentColor = color[i];
+            checkbox.value = i;
+
+            todo.appendChild(circle);
+            todo.appendChild(input);
+            todo.appendChild(checkbox);
+
+            container.appendChild(todo);
+        }
+    </script>
+    <script src="./js/todo.js"></script>
+</body>
+</html>
